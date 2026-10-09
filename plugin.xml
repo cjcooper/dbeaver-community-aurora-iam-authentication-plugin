@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<plugin>
+
+    <extension point="org.jkiss.dbeaver.dataSourceAuth">
+        <authModel
+            id="aws_rds_iam"
+            label="AWS IAM (Aurora / RDS)"
+            description="Generates a short-lived RDS IAM authentication token from your AWS credentials on every connect"
+            class="com.itproblems.dbeaver.aurora.iam.AuroraIamAuthModel"
+            requiresLocalConfiguration="true">
+            <datasource id="postgresql"/>
+            <datasource id="mysql"/>
+        </authModel>
+    </extension>
+
+    <extension point="org.jkiss.dbeaver.ui.propertyConfigurator">
+        <propertyConfigurator
+            class="com.itproblems.dbeaver.aurora.iam.AuroraIamAuthModel"
+            uiClass="com.itproblems.dbeaver.aurora.iam.ui.AuroraIamAuthConfigurator"/>
+    </extension>
+
+</plugin>
